@@ -1,0 +1,130 @@
+### Register a new user
+POST http://localhost:8000/api/auth/register/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email":"test@gmail.com",
+  "password": "testpass123"
+}
+
+### Login to get JWT tokens
+POST http://localhost:8000/api/auth/login/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpass123"
+}
+
+### Refresh JWT token
+POST http://localhost:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1Mzk2MzM3MywiaWF0IjoxNzQ2MTg3MzczLCJqdGkiOiJhY2M0ODNjNGFiMTM0NTk3YjBiZjY4MjEzMGMyN2JiZiIsInVzZXJfaWQiOjV9.lcYhIV45SUympBf3Yj6S86LxWdgb2smPFNH_05jk7Pk"
+}
+
+### Protected route (test auth)
+GET http://localhost:8000/api/protected/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### --------------------------
+### Patients API
+### --------------------------
+
+### Add a new patient
+POST http://localhost:8000/api/patients/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+{
+  "name": "John Doe",
+  "age": 45,
+  "disease": "Hypertension"
+}
+
+### Get all patients
+GET http://localhost:8000/api/patients/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Get a single patient by ID
+GET http://localhost:8000/api/patients/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Update a patient
+PUT http://localhost:8000/api/patients/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+{
+  "name": "John Doe Updated",
+  "age": 50,
+  "disease": "Diabetes"
+}
+
+### Delete a patient
+DELETE http://localhost:8000/api/patients/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### --------------------------
+### Doctors API
+### --------------------------
+
+### Add a new doctor
+POST http://localhost:8000/api/doctors/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+{
+  "name": "Dr. Smith",
+  "specia": "Cardiologist"
+}
+
+### Get all doctors
+GET http://localhost:8000/api/doctors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Get a doctor by ID
+GET http://localhost:8000/api/doctors/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Update a doctor
+PUT http://localhost:8000/api/doctors/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+{
+  "name": "Dr. Smith Updated",
+  "specia": "General Physician"
+}
+
+### Delete a doctor
+DELETE http://localhost:8000/api/doctors/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### --------------------------
+### Patient-Doctor Mapping API
+### --------------------------
+
+### Map a patient to a doctor
+POST http://localhost:8000/api/maps/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+{
+  "patient": 9,
+  "doctor": 2
+}
+
+### Get all mappings
+GET http://localhost:8000/api/maps/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Get a specific mapping
+GET http://localhost:8000/api/maps/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
+
+### Delete a mapping
+DELETE http://localhost:8000/api/maps/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2MTg3NjczLCJpYXQiOjE3NDYxODczNzMsImp0aSI6IjM5ZmQ5ODQzZTIyMTQ3OTM5YWRmMjYwNmY3Mjg0MGE0IiwidXNlcl9pZCI6NX0.r9vXwrTRDhEcfKLOQdD-iE-IP1DAV-0lRwFuZWs7tH8
